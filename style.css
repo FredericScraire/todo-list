@@ -1,0 +1,268 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  min-height: 100vh;
+  background-color: #f4f4f7;
+  font-family: -apple-system, "Helvetica Neue", Arial, sans-serif;
+}
+
+header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 1.25rem 1rem 0;
+  box-sizing: border-box;
+}
+
+#main-nav {
+  display: flex;
+  gap: 0.25rem;
+  padding: 4px;
+  background-color: #e5e7eb;
+  border-radius: 999px;
+}
+
+.nav-tab {
+  padding: 0.4rem 1.25rem;
+  font-size: 0.95rem;
+  color: #555;
+  background: none;
+  border: none;
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.nav-tab.active {
+  color: #2563eb;
+  font-weight: bold;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+}
+
+main {
+  width: 100%;
+  max-width: 420px;
+  padding: 2rem 1.5rem 3rem;
+  box-sizing: border-box;
+}
+
+#history-summary {
+  margin: 0 0 1rem;
+  color: #666;
+}
+
+#history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Direct children = task cards (date view) or category cards (category view) */
+#history-list > li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.history-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.history-date {
+  margin-top: 0.15rem;
+  color: #999;
+}
+
+h1 {
+  font-size: 1.75rem;
+  color: #222;
+  margin-bottom: 1.5rem;
+}
+
+#task-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+#task-input,
+#category-input {
+  padding: 0.6rem 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+#task-input {
+  flex: 1 1 100%;
+}
+
+#category-input {
+  flex: 1;
+  min-width: 0;
+}
+
+.category-badge {
+  padding: 0.15rem 0.5rem;
+  font-size: 0.75rem;
+  color: #2563eb;
+  background-color: #dbeafe;
+  border-radius: 999px;
+  white-space: nowrap;
+}
+
+#history-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+#history-sort {
+  padding: 0.3rem 0.5rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: white;
+}
+
+#history-list > li.history-group {
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.history-group-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.history-group-items {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.history-group-items li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0;
+  border-top: 1px solid #eee;
+}
+
+.history-toggle {
+  width: 100%;
+  margin-top: 0.25rem;
+  padding: 0.5rem;
+  font-size: 0.85rem;
+  color: #2563eb;
+  background: none;
+  border: none;
+  border-top: 1px solid #eee;
+  cursor: pointer;
+}
+
+.history-toggle:hover {
+  background-color: #eff6ff;
+}
+
+.history-group-time {
+  font-weight: normal;
+  font-size: 0.9rem;
+  color: #666;
+  font-variant-numeric: tabular-nums;
+}
+
+#task-form button {
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  color: white;
+  background-color: #2563eb;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#undo-button {
+  display: block;
+  margin: 0 0 1rem auto;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.85rem;
+  color: #333;
+  background-color: white;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#undo-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#task-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.5rem;
+  background-color: white;
+  border-radius: 8px;
+}
+
+#task-list li.done span {
+  text-decoration: line-through;
+  color: #999;
+}
+
+#task-list li.running {
+  background-color: #eff6ff;
+  box-shadow: inset 3px 0 0 #2563eb;
+}
+
+.play-button {
+  background: none;
+  border: none;
+  font-size: 1rem;
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.play-button:disabled {
+  color: #ccc;
+  cursor: not-allowed;
+}
+
+.timer {
+  margin-left: auto;
+  font-size: 0.9rem;
+  color: #666;
+  font-variant-numeric: tabular-nums;
+}
+
+.delete-button {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+}

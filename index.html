@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My To-Do List</title>
+  <link rel="stylesheet" href="style.css?v=7">
+</head>
+<body>
+
+  <header>
+    <nav id="main-nav">
+      <button type="button" class="nav-tab active" data-view="list">List</button>
+      <button type="button" class="nav-tab" data-view="history">History</button>
+    </nav>
+  </header>
+
+  <main>
+
+    <section id="view-list">
+      <h1>My To-Do List</h1>
+
+      <form id="task-form">
+        <input type="text" id="task-input" placeholder="Ajouter une tâche..." required>
+        <input type="text" id="category-input" list="category-options" placeholder="Catégorie (optionnel)">
+        <datalist id="category-options"></datalist>
+        <button type="submit">Ajouter</button>
+      </form>
+
+      <button type="button" id="undo-button">↩ Annuler la dernière action</button>
+
+      <ul id="task-list"></ul>
+    </section>
+
+    <section id="view-history" hidden>
+      <h1>History</h1>
+      <p id="history-summary"></p>
+
+      <div id="history-controls">
+        <label for="history-sort">Trier par</label>
+        <select id="history-sort">
+          <option value="date">Date</option>
+          <option value="category">Catégorie</option>
+        </select>
+      </div>
+      <ul id="history-list"></ul>
+    </section>
+
+  </main>
+
+  <script src="script.js?v=8"></script>
+</body>
+</html>
