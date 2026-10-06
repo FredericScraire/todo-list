@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>My To-Do List</title>
-  <link rel="stylesheet" href="style.css?v=7">
+  <link rel="stylesheet" href="style.css?v=16">
 </head>
 <body>
 
@@ -12,6 +12,7 @@
     <nav id="main-nav">
       <button type="button" class="nav-tab active" data-view="list">List</button>
       <button type="button" class="nav-tab" data-view="history">History</button>
+      <button type="button" class="nav-tab" data-view="stats">Stats</button>
     </nav>
   </header>
 
@@ -21,13 +22,36 @@
       <h1>My To-Do List</h1>
 
       <form id="task-form">
+        <h2 class="form-title">Nouvelle tâche</h2>
         <input type="text" id="task-input" placeholder="Ajouter une tâche..." required>
         <input type="text" id="category-input" list="category-options" placeholder="Catégorie (optionnel)">
         <datalist id="category-options"></datalist>
+        <input type="date" id="due-input" aria-label="Date d'échéance" title="Date d'échéance (optionnel)">
+        <select id="priority-select" aria-label="Priorité">
+          <option value="high">Priorité haute</option>
+          <option value="normal" selected>Priorité normale</option>
+          <option value="low">Priorité basse</option>
+        </select>
         <button type="submit">Ajouter</button>
       </form>
 
-      <button type="button" id="undo-button">↩ Annuler la dernière action</button>
+      <div id="list-toolbar">
+        <div class="toolbar-row">
+          <label for="category-filter">Catégorie</label>
+          <select id="category-filter"></select>
+          <button type="button" id="undo-button">↩ Annuler</button>
+        </div>
+        <div class="toolbar-row">
+          <label for="list-sort">Trier par</label>
+          <select id="list-sort">
+            <option value="manual">Ordre d'ajout</option>
+            <option value="due">Échéance</option>
+            <option value="priority">Priorité</option>
+          </select>
+        </div>
+      </div>
+
+      <p id="reorder-hint" hidden>Pour réordonner en glissant, choisis « Ordre d'ajout » dans « Trier par ».</p>
 
       <ul id="task-list"></ul>
     </section>
@@ -46,8 +70,37 @@
       <ul id="history-list"></ul>
     </section>
 
+    <section id="view-stats" hidden>
+      <h1>Stats</h1>
+
+      <section class="stats-card">
+        <div class="stats-header">
+          <h2>Temps suivi</h2>
+          <div class="stats-actions">
+            <select id="stats-period" aria-label="Période">
+              <option value="day">Par jour</option>
+              <option value="week">Par semaine</option>
+            </select>
+            <button type="button" id="export-time-csv" class="export-button">Exporter CSV</button>
+          </div>
+        </div>
+
+        <p id="stats-total"></p>
+        <div id="stats-chart" class="chart"></div>
+      </section>
+
+      <section class="stats-card">
+        <div class="stats-header">
+          <h2>Où va ton temps</h2>
+          <button type="button" id="export-categories-csv" class="export-button">Exporter CSV</button>
+        </div>
+        <p id="stats-top-category"></p>
+        <ul id="stats-categories"></ul>
+      </section>
+    </section>
+
   </main>
 
-  <script src="script.js?v=8"></script>
+  <script src="script.js?v=16"></script>
 </body>
 </html>
